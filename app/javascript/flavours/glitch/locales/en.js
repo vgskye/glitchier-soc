@@ -115,6 +115,7 @@ const messages = {
   'settings.wide_view_hint': 'Stretches columns to better fill the available space.',
   'settings.navbar_under': 'Navbar at the bottom (Mobile only)',
   'status.collapse': 'Collapse',
+  'status.react': 'React',
   'status.uncollapse': 'Uncollapse',
   'status.in_reply_to': 'This toot is a reply',
   'status.has_preview_card': 'Features an attached preview card',
