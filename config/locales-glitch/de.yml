@@ -1,0 +1,7 @@
+---
+de:
+  notification_mailer:
+    reaction:
+      body: "%{name} hat auf deinen Beitrag reagiert:"
+      subject: "%{name} hat auf deinen Beitrag reagiert"
+      title: Neue Reaktion

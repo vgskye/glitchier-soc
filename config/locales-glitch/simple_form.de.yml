@@ -1,0 +1,6 @@
+---
+de:
+  simple_form:
+    labels:
+      default:
+        setting_visible_reactions: Anzahl der sichtbaren Emoji-Reaktionen
