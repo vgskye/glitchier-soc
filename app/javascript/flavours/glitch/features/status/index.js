@@ -23,6 +23,7 @@ import {
 } from 'flavours/glitch/actions/interactions';
 import {
   replyCompose,
+  quoteCompose,
   mentionCompose,
   directCompose,
 } from 'flavours/glitch/actions/compose';
@@ -314,6 +315,21 @@ class Status extends ImmutablePureComponent {
       } else {
         dispatch(replyCompose(status, this.context.router.history));
       }
+    } else {
+      dispatch(openModal('INTERACTION', {
+        type: 'reply',
+        accountId: status.getIn(['account', 'id']),
+        url: status.get('url'),
+      }));
+    }
+  }
+
+  handleQuoteClick = (status) => {
+    const { dispatch } = this.props;
+    const { signedIn } = this.context.identity;
+
+    if (signedIn) {
+      dispatch(quoteCompose(status, this.context.router.history));
     } else {
       dispatch(openModal('INTERACTION', {
         type: 'reply',
@@ -692,6 +708,7 @@ class Status extends ImmutablePureComponent {
                   onFavourite={this.handleFavouriteClick}
                   onReblog={this.handleReblogClick}
                   onBookmark={this.handleBookmarkClick}
+                  onQuote={this.handleQuoteClick}
                   onDelete={this.handleDeleteClick}
                   onEdit={this.handleEditClick}
                   onDirect={this.handleDirectClick}
