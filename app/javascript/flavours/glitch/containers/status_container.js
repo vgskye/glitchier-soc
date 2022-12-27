@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import Status from 'flavours/glitch/components/status';
-import { List as ImmutableList } from 'immutable';
 import { makeGetStatus } from 'flavours/glitch/selectors';
 import {
   replyCompose,
@@ -17,6 +16,8 @@ import {
   unbookmark,
   pin,
   unpin,
+  addReaction,
+  removeReaction,
 } from 'flavours/glitch/actions/interactions';
 import {
   muteStatus,
@@ -184,6 +185,14 @@ const mapDispatchToProps = (dispatch, { intl, contextType }) => ({
     } else {
       dispatch(pin(status));
     }
+  },
+
+  onReactionAdd (statusId, name, url) {
+    dispatch(addReaction(statusId, name, url));
+  },
+
+  onReactionRemove (statusId, name) {
+    dispatch(removeReaction(statusId, name));
   },
 
   onEmbed (status) {
