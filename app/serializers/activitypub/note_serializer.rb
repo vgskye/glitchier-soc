@@ -12,6 +12,7 @@ class ActivityPub::NoteSerializer < ActivityPub::Serializer
              :conversation
 
   attribute :quote_uri, if: -> { object.quote? }
+  attribute :misskey_quote, key: :_misskey_quote, if: -> { object.quote? }
 
   attribute :content
   attribute :content_map, if: :language?
@@ -154,6 +155,8 @@ class ActivityPub::NoteSerializer < ActivityPub::Serializer
   def quote_uri
     ActivityPub::TagManager.instance.uri_for(object.quote) if object.quote?
   end
+
+  alias misskey_quote quote_uri
 
   def local?
     object.account.local?
